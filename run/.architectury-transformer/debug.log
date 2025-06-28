@@ -122,5 +122,5 @@
 [Architectury Transformer DEBUG]  - C:\Users\jeffr\.gradle\caches\modules-2\files-2.1\com.google.protobuf\protobuf-java\3.11.4\7ec0925cc3aef0335bbc7d57edfd42b0f86f8267\protobuf-java-3.11.4.jar
 [Architectury Transformer DEBUG]  - C:\Users\jeffr\.gradle\caches\modules-2\files-2.1\org.codehaus.plexus\plexus-utils\3.4.2\82445e007f9009ac5ba6ae5d6b6898c4ce54dcf6\plexus-utils-3.4.2.jar
 [Architectury Transformer DEBUG]  - C:\Users\jeffr\.gradle\caches\modules-2\files-2.1\net.kyori\option\1.0.0\59c5ae54c47ae294322ad979eaf7cdcde7ad0646\option-1.0.0.jar
-[Architectury Transformer] Read classpath in 3.029 s
-[Architectury Transformer DEBUG] Classpath entry [C:\Users\jeffr\CobblemonAddon\EclipseTest\cobblemon-mdks\fabric-kotlin\build\resources\main] contains packages: 
+[Architectury Transformer] Read classpath in 2.921 s
+[Architectury Transformer DEBUG] Classpath entry [C:\Users\jeffr\CobblemonAddon\CobbleAddon\build\resources\main] contains packages: 
