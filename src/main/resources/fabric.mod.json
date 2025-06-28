@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "cobblemon_fabric_mdk",
+  "id": "cobblemon_eclipse",
   "version": "${version}",
-  "name": "Cobblemon Fabric MDK",
+  "name": "Cobblemon Eclipse",
   "description": "A MDK useful for Fabric Development",
   "authors": [
     "The Cobblemon Team"
@@ -14,7 +14,7 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "com.cobblemon.mdks.fabric.FabricMod"
+        "value": "com.cobblemon.eclipse.FabricMod"
       }
     ]
   },
