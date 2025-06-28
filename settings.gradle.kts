@@ -1,20 +1,10 @@
-rootProject.name = "cobblemonsnap"
+rootProject.name = "Eclipse-Fabric" //By default, this is how your built jar is called
 
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        mavenCentral()
-
         maven("https://maven.fabricmc.net/")
         maven("https://maven.architectury.dev/")
         maven("https://maven.minecraftforge.net/")
+        gradlePluginPortal()
     }
-
-    includeBuild("gradle/build-logic")
 }
-
-listOf(
-    "common",
-    "neoforge",
-    "fabric"
-).forEach { include(it) }
