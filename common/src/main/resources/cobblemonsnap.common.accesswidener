@@ -1,0 +1,4 @@
+accessWidener	v2	named
+transitive-accessible field com/mojang/blaze3d/platform/GlStateManager TEXTURES [Lcom/mojang/blaze3d/platform/GlStateManager$TextureState;
+transitive-accessible field com/mojang/blaze3d/platform/GlStateManager activeTexture I
+transitive-accessible field com/mojang/blaze3d/platform/GlStateManager$TextureState binding I

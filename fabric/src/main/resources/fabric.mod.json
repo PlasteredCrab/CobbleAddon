@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblemonsnap",
+  "version": "1.0.0",
+  "name": "Cobblemon Snap",
+  "description": "A mod for displaying and sharing pictures of your pokemon!",
+  "authors": [
+    "The Cobblemon Team"
+  ],
+  "license": "MPL-2.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.cobblemon.snap.fabric.CobblemonSnapFabric"
+    ],
+    "client": [
+      "com.cobblemon.snap.fabric.client.CobblemonSnapFabricClient"
+    ]
+  },
+  "mixins": [
+    "mixins.cobblemonsnap-common.json"
+  ],
+  "depends": {
+    "java": ">=21",
+    "minecraft": ">=1.21",
+    "fabricloader": ">=0.15.11",
+    "fabric": "*",
+    "cobblemon": ">=1.6.0"
+  }
+}
