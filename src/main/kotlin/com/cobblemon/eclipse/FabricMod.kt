@@ -1,5 +1,6 @@
 package com.cobblemon.eclipse
 
+import com.cobblemon.eclipse.events.BattleRewardListener
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.util.cobblemonResource
 import com.mojang.brigadier.CommandDispatcher
@@ -8,6 +9,8 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder.literal
+import net.impactdev.impactor.api.Impactor
+import net.impactdev.impactor.api.ImpactorServiceProvider
 import net.minecraft.commands.CommandSourceStack
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.Style
@@ -19,6 +22,9 @@ import net.minecraft.network.chat.Style
 object FabricMod : ModInitializer {
 
     override fun onInitialize() {
+
+        // Register battle reward listener
+        BattleRewardListener.onInitialize()
 
         CommandRegistrationCallback.EVENT.register { dispatcher, registryAccess, environment ->
 

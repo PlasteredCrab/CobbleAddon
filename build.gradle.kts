@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("dev.architectury.loom") version("1.7-SNAPSHOT")
+    id("dev.architectury.loom") version("1.10-SNAPSHOT")
     id("architectury-plugin") version("3.4-SNAPSHOT")
     kotlin("jvm") version ("1.9.23")
 }
@@ -22,6 +22,7 @@ repositories {
     maven(url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
     maven("https://maven.impactdev.net/repository/development/")
     maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://maven.pkg.jetbrains.space/public/p/kotlinx/maven")
 }
 
 dependencies {
@@ -35,7 +36,14 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:1.12.3+kotlin.2.0.21")
     modImplementation("com.cobblemon:fabric:1.6.0+1.21.1-SNAPSHOT")
 
+    val cloudVersion = "2.0.0-beta.11"
+    modImplementation("org.incendo:cloud-fabric:$cloudVersion")
+    modRuntimeOnly("org.incendo:cloud-fabric:$cloudVersion")
+    include("org.incendo:cloud-fabric:$cloudVersion")
+
+
     implementation("net.impactdev.impactor.api:economy:5.3.0")
+    modRuntimeOnly("net.impactdev.impactor.launchers:fabric:5.3.0+1.21.1")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
