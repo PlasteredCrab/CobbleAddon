@@ -2,7 +2,7 @@ plugins {
     id("java")
     id("dev.architectury.loom") version("1.10-SNAPSHOT")
     id("architectury-plugin") version("3.4-SNAPSHOT")
-    kotlin("jvm") version ("1.9.23")
+    kotlin("jvm") version ("2.0.0")
 }
 
 group = "com.cobblemon.eclipse"
