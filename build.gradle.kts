@@ -36,7 +36,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:1.12.3+kotlin.2.0.21")
     modImplementation("com.cobblemon:fabric:1.6.0+1.21.1-SNAPSHOT")
 
-    val cloudVersion = "2.0.0-beta.11"
+    val cloudVersion = "2.0.0-beta.2"
     modImplementation("org.incendo:cloud-fabric:$cloudVersion")
     modRuntimeOnly("org.incendo:cloud-fabric:$cloudVersion")
     include("org.incendo:cloud-fabric:$cloudVersion")
