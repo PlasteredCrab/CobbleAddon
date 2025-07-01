@@ -43,7 +43,12 @@ dependencies {
 
 
     implementation("net.impactdev.impactor.api:economy:5.3.0")
-    modRuntimeOnly("net.impactdev.impactor.launchers:fabric:5.3.0+1.21.1")
+    modImplementation("net.impactdev.impactor.commands:fabric:5.3.6+1.21.1") {
+        isTransitive = false
+    }
+    modRuntimeOnly("net.impactdev.impactor.launchers:fabric:5.3.0+1.21.1") {
+        isTransitive = false
+    }
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
