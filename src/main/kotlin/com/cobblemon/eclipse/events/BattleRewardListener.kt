@@ -21,6 +21,11 @@ object BattleRewardListener {
 
             val playerMap = event.battle.players.associateBy { it.uuid }
 
+            // Exit early if any loser is a player so those stinkers don't cheese the system
+            if (event.losers.any { actor -> actor.getPlayerUUIDs().any { uuid -> playerMap.containsKey(uuid) } }) {
+                return@subscribe
+            }
+
             event.winners.forEach { actor ->
                 actor.getPlayerUUIDs().forEach { uuid ->
                     economy.account(uuid).thenAccept { account ->
