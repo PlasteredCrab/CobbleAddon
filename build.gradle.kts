@@ -36,20 +36,16 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:1.12.3+kotlin.2.0.21")
     modImplementation("com.cobblemon:fabric:1.6.0+1.21.1-SNAPSHOT")
 
-    val cloudVersion = "2.0.0-beta.2"
-    modImplementation("org.incendo:cloud-fabric:$cloudVersion")
-    modRuntimeOnly("org.incendo:cloud-fabric:$cloudVersion")
-    include("org.incendo:cloud-fabric:$cloudVersion")
+
+    //val cloudVersion = "2.0.0-beta.2"
+    //modImplementation("org.incendo:cloud-fabric:$cloudVersion")
+    //modRuntimeOnly("org.incendo:cloud-fabric:$cloudVersion")
+    //include("org.incendo:cloud-fabric:$cloudVersion")
 
     //implementation("net.impactdev.impactor.api:economy:5.3.0")
 
-    implementation("net.impactdev.impactor.api:economy:5.3.0")
-    /*modImplementation("net.impactdev.impactor.commands:fabric:5.3.6+1.21.1") {
-        isTransitive = false
-    }*/
-    modRuntimeOnly("net.impactdev.impactor.launchers:fabric:5.3.0+1.21.1") {
-        isTransitive = false
-    }
+    compileOnly("net.impactdev.impactor.api:economy:5.3.4")
+    modRuntimeOnly(fileTree("libs") { include("*.jar") })
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
