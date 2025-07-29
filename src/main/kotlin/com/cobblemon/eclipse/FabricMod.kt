@@ -1,5 +1,6 @@
 package com.cobblemon.eclipse
 
+import com.cobblemon.eclipse.commands.CurrencyCommands
 import com.cobblemon.eclipse.events.BattleRewardListener
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies
 import com.cobblemon.mod.common.util.cobblemonResource
@@ -9,8 +10,6 @@ import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder.literal
-import net.impactdev.impactor.api.Impactor
-import net.impactdev.impactor.api.ImpactorServiceProvider
 import net.minecraft.commands.CommandSourceStack
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.Style
@@ -42,6 +41,9 @@ object FabricMod : ModInitializer {
 
                 0
             }.register(dispatcher)
+
+
+            CurrencyCommands.register(dispatcher)
         }
 
     }
