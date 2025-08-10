@@ -10,40 +10,32 @@ import net.minecraft.network.chat.Component
 import java.math.BigDecimal
 import java.util.*
 
-/**
- * Rewards players with Impactor currency for winning wild Pokémon battles.
- */
+/** Rewards players with Impactor currency for winning wild Pokémon battles. */
 object BattleRewardListener {
 
-    private val REWARD_AMOUNT: BigDecimal = BigDecimal(100.00)
-    private const val REWARD_CURRENCY_KEY = "event_points" // change as needed
+    private val REWARD_AMOUNT: BigDecimal = BigDecimal(100)
+    // You can set just "event_points" or the full "impactor:event_points".
+    private const val REWARD_CURRENCY_KEY: String = "event_points"
 
     fun onInitialize() {
         CobblemonEvents.BATTLE_VICTORY.subscribe { event: BattleVictoryEvent ->
             val economy = Impactor.instance().services().provide(EconomyService::class.java)
             val playerMap = event.battle.players.associateBy { it.uuid }
 
-            // ✅ Only reward if all losers are wild Pokémon (no UUIDs)
+            // Only reward if all losers are wild (no player UUIDs)
             val allWild = event.losers.all { actor -> actor.getPlayerUUIDs().none() }
             if (!allWild) return@subscribe
 
-            // ✅ Correct currency lookup
-            val currencyProvider = economy.currencies()
-            val currencies: Set<Currency> = currencyProvider.registered()
-            val currency = currencies.firstOrNull {
-                it.key().equals(REWARD_CURRENCY_KEY)
-            } ?: return@subscribe
+            val currency = resolveCurrency(economy, REWARD_CURRENCY_KEY) ?: return@subscribe
 
-            // ✅ Reward each winner
             event.winners.forEach { actor ->
                 actor.getPlayerUUIDs().forEach { uuid ->
                     economy.account(currency, uuid).thenAccept { account ->
-                        val finalAccount = account ?: createAccount(uuid, currency)
-                        finalAccount.deposit(REWARD_AMOUNT)
+                        val acc = account ?: createAccount(uuid, currency)
+                        acc.deposit(REWARD_AMOUNT)
 
-                        // Notify the player if online
                         playerMap[uuid]?.sendSystemMessage(
-                            Component.literal("You earned ${REWARD_AMOUNT.toPlainString()} ${currency.key()} for winning a battle!")
+                            Component.literal("You earned ${REWARD_AMOUNT.toPlainString()} ${currency.key().asString()} for winning a battle!")
                         )
                     }
                 }
@@ -51,7 +43,19 @@ object BattleRewardListener {
         }
     }
 
-    /** Creates an account for the player if missing. */
+    private fun resolveCurrency(economy: EconomyService, input: String): Currency? {
+        val currencies = economy.currencies().registered()
+        val lower = input.lowercase(Locale.ROOT)
+
+        currencies.firstOrNull { it.key().asString().equals(lower, ignoreCase = true) }?.let { return it }
+
+        return currencies.firstOrNull {
+            val full = it.key().asString()
+            val short = full.substringAfter(':')
+            short.equals(lower, ignoreCase = true)
+        }
+    }
+
     private fun createAccount(owner: UUID, currency: Currency): Account {
         return Account.builder()
             .owner(owner)
